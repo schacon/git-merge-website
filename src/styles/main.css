@@ -1,0 +1,47 @@
+@import 'reset.css';
+
+:root {
+	--clr-background: #1e1d19;
+	--clr-white: #f5f4eb;
+	--clr-accent: #ff4455;
+	--text-spacing: -0.05em;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+::selection {
+	background-color: var(--clr-accent);
+	color: var(--clr-background);
+}
+
+body {
+	font-size: 16px;
+	font-family: 'Whois', monospace;
+	color: var(--clr-white);
+	letter-spacing: var(--text-spacing);
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+
+	width: 100%;
+	overflow-x: hidden;
+
+	background-image: radial-gradient(
+		color-mix(in srgb, var(--clr-background) 90%, var(--clr-white)) 2px,
+		var(--clr-background) 0
+	);
+	background-size: 40px 40px;
+	background-position: -19px -19px;
+
+	&::-webkit-scrollbar {
+		width: 8px; /* Mostly for vertical scrollbars */
+		height: 8px; /* Mostly for horizontal scrollbars */
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--clr-accent-hover);
+	}
+}
