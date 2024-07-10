@@ -106,6 +106,7 @@
 	}
 
 	.back-video {
+		pointer-events: none;
 		position: absolute;
 		z-index: 0;
 		top: 0;
@@ -121,6 +122,8 @@
 	}
 
 	.ticket-content {
+		position: relative;
+		z-index: 1;
 		flex: 1;
 		display: flex;
 		flex-direction: column;

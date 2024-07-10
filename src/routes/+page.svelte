@@ -1,10 +1,17 @@
 <script lang="ts">
 	import '../styles/main.css';
 	import { Hero, Benefits, DaysSneakpeak, VideoThumbs, Photos, Ticket, Footer } from '$lib';
+
+	$: isDocLoaded = false;
 </script>
 
 <main class="page-wrapper">
-	<Hero />
+	<Hero
+		bind:isDocLoaded
+		on:videoLoaded={() => {
+			isDocLoaded = true;
+		}}
+	/>
 	<Benefits />
 	<DaysSneakpeak />
 	<VideoThumbs />

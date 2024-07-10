@@ -1,8 +1,34 @@
-<script>
+<script lang="ts">
+	import { fade } from 'svelte/transition';
 	import { links } from '../../content-data';
+	import { createEventDispatcher } from 'svelte';
+
+	export let isDocLoaded: boolean;
+	let videoEl: HTMLVideoElement;
+
+	const dispatch = createEventDispatcher<{
+		videoLoaded: void;
+	}>();
+
+	$: if (videoEl) {
+		if (videoEl.readyState >= 3) {
+			dispatch('videoLoaded');
+		}
+
+		videoEl.addEventListener('loadeddata', () => {
+			dispatch('videoLoaded');
+		});
+	}
+
+	// $: if (videoEl && videoEl.readyState >= 3) {
+	// 	dispatch('videoLoaded');
+	// 	console.log('video loaded');
+	// }
 </script>
 
-<section class="wrapper">
+<p style:padding="20px">isDocLoaded: {isDocLoaded}</p>
+
+<section class="wrapper" class:show={isDocLoaded}>
 	<div class="frame">
 		<div class="title">
 			<span>Git</span>
@@ -34,6 +60,7 @@
 
 		<!-- svelte-ignore a11y-media-has-caption -->
 		<video
+			bind:this={videoEl}
 			class="back-video"
 			src="video/render-1.mp4"
 			autoplay
@@ -50,6 +77,19 @@
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 52px;
+		/* opacity: 0;
+		transform: scale(0.9); */
+	}
+
+	.show {
+		/* animation: show-animation 0.5s forwards; */
+	}
+
+	@keyframes show-animation {
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
 	}
 
 	.frame {
@@ -63,6 +103,7 @@
 	}
 
 	.back-video {
+		pointer-events: none;
 		position: absolute;
 		z-index: 0;
 		top: 0;
@@ -74,7 +115,7 @@
 		object-fit: cover;
 		object-position: center;
 		mix-blend-mode: lighten;
-		filter: blur(15px);
+		filter: blur(25px);
 	}
 
 	.arrows-img {

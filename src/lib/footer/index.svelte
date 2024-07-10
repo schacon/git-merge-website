@@ -129,6 +129,7 @@
 	}
 
 	.back-video {
+		pointer-events: none;
 		position: absolute;
 		z-index: 0;
 		top: 0;
