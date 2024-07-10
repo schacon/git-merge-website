@@ -1,3 +1,3 @@
 export const links = {
-  tickets: 'https://www.eventbrite.com/e/your-event-tickets-1234567890',
+  tickets: 'https://ti.to/gitmerge/2024/with/general',
 } 
