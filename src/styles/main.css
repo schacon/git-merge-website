@@ -1,4 +1,5 @@
 @import 'reset.css';
+@import '../fonts/fonts.css';
 
 :root {
 	--clr-background: #1e1d19;
@@ -12,7 +13,7 @@
 }
 
 ::selection {
-	background-color: var(--clr-accent);
+	background-color: #FFBB36;
 	color: var(--clr-background);
 }
 
@@ -41,7 +42,11 @@ body {
 		height: 8px; /* Mostly for horizontal scrollbars */
 	}
 
+	&::-webkit-scrollbar-track {
+		background: var(--clr-background);
+	}
+
 	&::-webkit-scrollbar-thumb {
-		background: var(--clr-accent-hover);
+		background: color-mix(in srgb, var(--clr-white) 20%, var(--clr-background));
 	}
 }

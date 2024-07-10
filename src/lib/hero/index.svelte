@@ -1,63 +1,91 @@
-<script lnag="ts">
-	import '../../styles/main.css';
+<script>
+	import { links } from '../../content-data';
 </script>
 
 <section class="wrapper">
-	<div class="title">
-		<span>Git</span>
-		<span>Merge</span>
-		<span class="title-year">24</span>
-	</div>
+	<div class="frame">
+		<div class="title">
+			<span>Git</span>
+			<span>Merge</span>
+			<span class="title-year">24</span>
+		</div>
 
-	<div class="info desktop">
-		<p>Dates_______________<span>September 19—20</span></p>
-		<p>Location____________<span>Berlin</span></p>
-		<p>Venue_______________<span>TBD</span></p>
-	</div>
+		<div class="info desktop">
+			<p>Dates_______________<span>September 19—20</span></p>
+			<p>Location____________<span>Berlin</span></p>
+			<p>Venue_______________<span>TBD</span></p>
+		</div>
 
-	<div class="info tablet">
-		<p>Dates_______________<span>September 19—20</span></p>
-		<p>Location____________<span>Berlin</span></p>
-		<p>Venue_______________<span>TBD</span></p>
-	</div>
+		<div class="info tablet">
+			<p>Dates__<span>September 19—20</span></p>
+			<p>City___<span>Berlin</span></p>
+			<p>Venue__<span>TBD</span></p>
+		</div>
 
-	<div class="footer">
-		<a class="cta-button" href="https://tito.io/" target="_blank"
-			>Buy a ticket <span class="cta-button-price">99€</span></a
-		>
-		<p class="tagline">One conference.<br />All things Git <span class="tagline-carret" /></p>
-	</div>
+		<div class="footer">
+			<a class="cta-button" href={links.tickets} target="_blank"
+				><span>Buy</span><span>a</span><span>ticket</span><span class="cta-button-price">99€</span
+				></a
+			>
+			<p class="tagline">One conference.<br />All things Git <span class="tagline-carret" /></p>
+		</div>
 
-	<img class="arrows-img desktop" src="images/hero-arrows-desktop.svg" alt="" />
-	<img class="arrows-img tablet" src="images/hero-arrows-tablet.svg" alt="" />
+		<img class="arrows-img" src="images/hero-arrows-tablet.svg" alt="" />
+
+		<!-- svelte-ignore a11y-media-has-caption -->
+		<video
+			class="back-video"
+			src="video/render-1.mp4"
+			autoplay
+			loop
+			controls={false}
+			playsinline
+			muted
+		/>
+	</div>
 </section>
 
 <style>
 	.wrapper {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 52px;
+	}
+
+	.frame {
 		position: relative;
 		background-color: #373737;
 		width: 100%;
+		height: 100%;
 		border-radius: 50px;
 		overflow: hidden;
 		padding: 52px;
 	}
 
+	.back-video {
+		position: absolute;
+		z-index: 0;
+		top: 0;
+		left: 0;
+		min-width: calc(100% + 40px);
+		height: calc(100% + 40px);
+		margin-left: -20px;
+		margin-top: -20px;
+		object-fit: cover;
+		object-position: center;
+		mix-blend-mode: lighten;
+		filter: blur(15px);
+	}
+
 	.arrows-img {
 		position: absolute;
+		z-index: 0;
+		bottom: -80px;
+		left: 70%;
+		width: 520px;
 
 		object-fit: cover;
 		object-position: top right;
-	}
-
-	.arrows-img.desktop {
-		bottom: -50px;
-		left: 65%;
-	}
-
-	.arrows-img.tablet {
-		top: -20px;
-		left: 68%;
-		display: none;
 	}
 
 	/* TITLE */
@@ -90,6 +118,8 @@
 	/* INFO */
 
 	.info {
+		position: relative;
+		z-index: 1;
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
@@ -110,13 +140,11 @@
 		display: none;
 	}
 
-	.info.tablet p {
-		font-size: 20px;
-	}
-
 	/* FOOTER */
 
 	.footer {
+		position: relative;
+		z-index: 1;
 		display: flex;
 		align-items: center;
 		gap: 50px;
@@ -124,6 +152,7 @@
 
 	.cta-button {
 		display: flex;
+		gap: 10px;
 		width: fit-content;
 		font-family: 'Martian Mono';
 		font-size: 26px;
@@ -131,7 +160,7 @@
 		color: var(--clr-white);
 		background-color: var(--clr-accent);
 		text-decoration: none;
-		padding: 22px 40px;
+		padding: 32px 40px;
 		border-radius: 20px;
 		letter-spacing: -0.06em;
 	}
@@ -189,12 +218,8 @@
 			font-size: 110px;
 		}
 
-		.arrows-img.desktop {
-			display: none;
-		}
-
-		.arrows-img.tablet {
-			display: block;
+		.info.tablet p {
+			font-size: 20px;
 		}
 	}
 
@@ -204,20 +229,21 @@
 			align-items: flex-start;
 			gap: 40px;
 		}
-
-		.arrows-img.tablet {
-			top: auto;
-			bottom: -40px;
-		}
 	}
 
 	@media (max-width: 1040px) {
-		.wrapper {
+		.frame {
 			padding: 40px;
 		}
 
+		.arrows-img {
+			width: 420px;
+			bottom: -40px;
+			left: 64%;
+		}
+
 		.title span {
-			font-size: 90px;
+			font-size: 80px;
 			margin-right: 12px;
 		}
 
@@ -231,6 +257,55 @@
 
 		.tagline {
 			--font-size: 20px;
+		}
+	}
+
+	@media (max-width: 800px) {
+		.frame {
+			padding: 24px;
+			border-radius: 40px;
+			min-height: 620px;
+		}
+
+		.title {
+			margin-bottom: 30px;
+		}
+
+		.title span {
+			font-size: 38px;
+			margin-right: 12px;
+		}
+
+		.info {
+			margin-bottom: 30px;
+		}
+
+		.cta-button-price {
+			margin-left: 6px;
+		}
+
+		.arrows-img {
+			width: 440px;
+			min-width: 400px;
+			bottom: -80px;
+			left: auto;
+			right: 0%;
+		}
+
+		.cta-button {
+			font-size: 24px;
+			padding: 22px;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.frame {
+			margin: -10px;
+			width: calc(100% + 20px);
+		}
+
+		.arrows-img {
+			bottom: -140px;
 		}
 	}
 </style>
