@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { inViewport } from '../../utils/inViewport';
-	import { links } from '../../content-data';
+	import { inViewport } from '../../../utils/inViewport';
+	import { links } from '../../../content-data';
 
 	export let isDocLoaded: boolean;
 

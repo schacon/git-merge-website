@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { shuffleLetters } from '../../utils/shuffleLetters';
-	import { inViewport } from '../../utils/inViewport';
+	import { inViewport } from '../../../utils/inViewport';
 	export let isDocLoaded = false;
 
 	$: isInViewport = false;

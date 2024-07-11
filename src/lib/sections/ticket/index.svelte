@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { links } from '../../content-data';
-	import { inViewport } from '../../utils/inViewport';
+	import { links } from '../../../content-data';
+	import { inViewport } from '../../../utils/inViewport';
 	export let isDocLoaded = false;
 
 	$: isInViewport = false;
@@ -20,8 +20,8 @@
 			<div class="mobile-price">
 				<span class="price">99€</span>
 				<div class="arrow-wrap">
-					<div class="arrow-circle" />
-					<div class="arrow-line" />
+					<div class="arrow-circle"></div>
+					<div class="arrow-line"></div>
 					<svg
 						width="32"
 						height="37"

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { inViewport } from '../../utils/inViewport';
+	import { inViewport } from '../../../utils/inViewport';
 
 	export let isDocLoaded = false;
 

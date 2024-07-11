@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { inViewport } from '../../utils/inViewport';
+	import { inViewport } from '../../../utils/inViewport';
 	export let isDocLoaded = false;
 
 	$: isInViewport = false;
@@ -17,19 +17,19 @@
 			<div
 				class="thumb-preview thumb-preview-1"
 				style:background-image="url('images/video-preview/preview-4.webp')"
-			/>
+			></div>
 		</div>
 		<div class="thumb-wrap">
 			<div
 				class="thumb-preview thumb-preview-2"
 				style:background-image="url('images/video-preview/preview-3.webp')"
-			/>
+			></div>
 		</div>
 		<div class="thumb-wrap">
 			<div
 				class="thumb-preview thumb-preview-3"
 				style:background-image="url('images/video-preview/preview-2.webp')"
-			/>
+			></div>
 		</div>
 		<div class="camera-shaped-wrap">
 			<div class="camera-shaped">
@@ -124,6 +124,7 @@
 	.camera-shaped-wrap {
 		z-index: 1;
 		position: relative;
+		align-self: flex-start;
 		margin-right: -110px;
 		width: 538px;
 	}

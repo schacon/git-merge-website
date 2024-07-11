@@ -1,13 +1,12 @@
 <script lang="ts">
-	import { DotLottieSvelte, type DotLottie } from '@lottiefiles/dotlottie-svelte';
-	import { shuffleLetters } from '../../utils/shuffleLetters';
-	import { inViewport } from '../../utils/inViewport';
-	import { links } from '../../content-data';
+	import { DotLottieSvelte } from '@lottiefiles/dotlottie-svelte';
+	import { shuffleByChar } from '../../../utils/shuffleByChar';
+	import { inViewport } from '../../../utils/inViewport';
+	import { links } from '../../../content-data';
 	import { createEventDispatcher } from 'svelte';
 
 	export let isDocLoaded: boolean;
 	let videoEl: HTMLVideoElement;
-	let dotLottie: DotLottie | null = null;
 	$: isInViewport = false;
 
 	const dispatch = createEventDispatcher<{
@@ -34,45 +33,47 @@
 	}}
 >
 	<div class="frame">
+		<a use:shuffleByChar class="text-mode-link" href="/cli">TXT MODE</a>
+
 		<div class="title">
-			<span use:shuffleLetters>Git</span>
-			<span use:shuffleLetters>Merge</span>
-			<span use:shuffleLetters class="title-year">24</span>
+			<span use:shuffleByChar>Git</span>
+			<span use:shuffleByChar>Merge</span>
+			<span use:shuffleByChar class="title-year">24</span>
 		</div>
 
 		<div class="info desktop">
 			<p>
-				<span use:shuffleLetters={900}>Dates</span>_______________<span use:shuffleLetters
+				<span use:shuffleByChar={900}>Dates</span>_______________<span use:shuffleByChar
 					>September 19—20</span
 				>
 			</p>
 			<p>
-				<span use:shuffleLetters={900}>Location</span>____________<span use:shuffleLetters
+				<span use:shuffleByChar={900}>Location</span>____________<span use:shuffleByChar
 					>Berlin</span
 				>
 			</p>
 			<p>
-				<span use:shuffleLetters={900}>Venue</span>_______________<span use:shuffleLetters>TBD</span
-				>
+				<span use:shuffleByChar={900}>Venue</span>_______________<span use:shuffleByChar>TBD</span>
 			</p>
 		</div>
 
 		<div class="info tablet">
-			<p><span use:shuffleLetters>Dates</span>__<span use:shuffleLetters>September 19—20</span></p>
-			<p><span use:shuffleLetters>City</span>___<span use:shuffleLetters>Berlin</span></p>
-			<p><span use:shuffleLetters>Venue</span>__<span use:shuffleLetters>TBD</span></p>
+			<p><span use:shuffleByChar>Dates</span>__<span use:shuffleByChar>September 19—20</span></p>
+			<p><span use:shuffleByChar>City</span>___<span use:shuffleByChar>Berlin</span></p>
+			<p><span use:shuffleByChar>Venue</span>__<span use:shuffleByChar>TBD</span></p>
 		</div>
 
 		<div class="footer">
 			<a class="cta-button" href={links.tickets} target="_blank"
-				><span use:shuffleLetters>Buy</span><span use:shuffleLetters>a</span><span
-					use:shuffleLetters>ticket</span
-				><span use:shuffleLetters class="cta-button-price">99€</span></a
+				><span class="hover-shuffle">Buy a ticket</span><span
+					use:shuffleByChar
+					class="cta-button-price hover-shuffle">99€</span
+				></a
 			>
 			<p class="tagline">
-				<span use:shuffleLetters>One conference.</span><br /><span use:shuffleLetters
+				<span use:shuffleByChar>One conference.</span><br /><span use:shuffleByChar
 					>All things Git</span
-				> <span class="tagline-carret" />
+				> <span class="tagline-carret"></span>
 			</p>
 		</div>
 
@@ -82,11 +83,8 @@
 				autoResizeCanvas={true}
 				autoplay={true}
 				speed={0.8}
-				dotLottieRefCallback={(ref) => (dotLottie = ref)}
 			/>
 		</div>
-
-		<!-- <img class="arrows-lottie" src="images/hero-arrows-tablet.svg" alt="" /> -->
 
 		<!-- svelte-ignore a11y-media-has-caption -->
 		<video
@@ -98,7 +96,7 @@
 			controls={false}
 			playsinline
 			muted
-		/>
+		></video>
 	</div>
 </section>
 
@@ -119,6 +117,19 @@
 		border-radius: 50px;
 		overflow: hidden;
 		padding: 52px;
+	}
+
+	.text-mode-link {
+		z-index: 2;
+		position: absolute;
+		bottom: 40px;
+		right: 40px;
+		font-family: 'Martian Mono';
+		font-size: 12px;
+		font-weight: 400;
+		color: var(--clr-white);
+		text-decoration: underline;
+		text-underline-offset: 4px;
 	}
 
 	.back-video {
@@ -372,7 +383,12 @@
 		}
 
 		.arrows-lottie {
-			bottom: -140px;
+			bottom: -170px;
+		}
+
+		.text-mode-link {
+			bottom: 30px;
+			right: 30px;
 		}
 	}
 </style>
