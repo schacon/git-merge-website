@@ -1,4 +1,18 @@
-<section class="wrapper">
+<script lang="ts">
+	import { shuffleLetters } from '../../utils/shuffleLetters';
+	import { inViewport } from '../../utils/inViewport';
+	export let isDocLoaded = false;
+
+	$: isInViewport = false;
+</script>
+
+<section
+	class="wrapper"
+	class:show={isDocLoaded && isInViewport}
+	use:inViewport={() => {
+		isInViewport = true;
+	}}
+>
 	<h2 class="title">
 		Technical talks <img class="title-icon" src="images/benefits/branch-icon.svg" alt="" />,
 		<br />
@@ -24,6 +38,8 @@
 	.wrapper {
 		display: flex;
 		flex-direction: column;
+		opacity: 0;
+		animation-delay: 0.2s;
 	}
 
 	.title {
@@ -33,7 +49,6 @@
 		line-height: 110%;
 		max-width: 1200px;
 		margin-bottom: 40px;
-		/* text-wrap: balance; */
 	}
 
 	.title-icon {
@@ -84,7 +99,7 @@
 		}
 
 		.details {
-			--font-size: 28px;
+			--font-size: 24px;
 			line-height: 130%;
 		}
 

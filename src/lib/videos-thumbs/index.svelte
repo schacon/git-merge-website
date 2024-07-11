@@ -1,4 +1,17 @@
-<section class="wrapper">
+<script lang="ts">
+	import { inViewport } from '../../utils/inViewport';
+	export let isDocLoaded = false;
+
+	$: isInViewport = false;
+</script>
+
+<section
+	class="wrapper"
+	class:show={isDocLoaded && isInViewport}
+	use:inViewport={() => {
+		isInViewport = true;
+	}}
+>
 	<div class="thumbs-wrap">
 		<div class="thumb-wrap">
 			<div
@@ -67,6 +80,8 @@
 	.wrapper {
 		display: flex;
 		padding-bottom: 70px;
+		/* initial */
+		opacity: 0;
 	}
 
 	.thumbs-wrap {

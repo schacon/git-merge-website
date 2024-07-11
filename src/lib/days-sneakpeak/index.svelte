@@ -1,5 +1,8 @@
-<script>
+<script lang="ts">
+	import { inViewport } from '../../utils/inViewport';
 	import { links } from '../../content-data';
+
+	export let isDocLoaded: boolean;
 
 	const data = {
 		left: {
@@ -21,9 +24,17 @@
 			}
 		]
 	};
+
+	$: isInViewport = false;
 </script>
 
-<section class="w-d">
+<section
+	class="w-d"
+	class:show={isDocLoaded && isInViewport}
+	use:inViewport={() => {
+		isInViewport = true;
+	}}
+>
 	<div class="l-c">
 		<div class="day-one-card">
 			<div class="day-one-card__image">
@@ -33,7 +44,7 @@
 				{data.left.text}
 			</p>
 		</div>
-		<a class="cta-button" href={links.tickets}
+		<a class="cta-button" href={links.tickets} target="_blank"
 			><span>Buy a ticket</span> <span class="cta-button__price">99€</span><svg
 				class="cta-button__arrow"
 				width="72"
@@ -195,6 +206,8 @@
 		gap: 24px;
 		padding-bottom: 70px;
 		margin-top: 100px;
+		/* initial */
+		opacity: 0;
 	}
 
 	.w-t,
@@ -254,6 +267,19 @@
 		text-decoration: none;
 		color: var(--color-white);
 		font-size: 35px;
+
+		transition:
+			filter 0.2s,
+			transform 0.2s;
+
+		&:hover {
+			filter: brightness(0.9) contrast(1.1);
+			transform: translateX(2px);
+
+			& .cta-button__arrow {
+				transform: translateX(6px);
+			}
+		}
 	}
 
 	.cta-button__price {
@@ -262,6 +288,7 @@
 
 	.cta-button__arrow {
 		fill: var(--clr-white);
+		transition: transform 0.2s;
 	}
 
 	.w-d .r-c {

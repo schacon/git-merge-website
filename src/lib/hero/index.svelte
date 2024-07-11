@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
+	import { shuffleLetters } from '../../utils/shuffleLetters';
+	import { inViewport } from '../../utils/inViewport';
 	import { links } from '../../content-data';
 	import { createEventDispatcher } from 'svelte';
 
 	export let isDocLoaded: boolean;
 	let videoEl: HTMLVideoElement;
+	$: isInViewport = false;
 
 	const dispatch = createEventDispatcher<{
 		videoLoaded: void;
@@ -19,41 +21,57 @@
 			dispatch('videoLoaded');
 		});
 	}
-
-	// $: if (videoEl && videoEl.readyState >= 3) {
-	// 	dispatch('videoLoaded');
-	// 	console.log('video loaded');
-	// }
 </script>
 
-<p style:padding="20px">isDocLoaded: {isDocLoaded}</p>
-
-<section class="wrapper" class:show={isDocLoaded}>
+<section
+	class="wrapper"
+	class:show={isDocLoaded && isInViewport}
+	use:inViewport={() => {
+		isInViewport = true;
+		console.log('inViewport');
+	}}
+>
 	<div class="frame">
 		<div class="title">
-			<span>Git</span>
-			<span>Merge</span>
-			<span class="title-year">24</span>
+			<span use:shuffleLetters>Git</span>
+			<span use:shuffleLetters>Merge</span>
+			<span use:shuffleLetters class="title-year">24</span>
 		</div>
 
 		<div class="info desktop">
-			<p>Dates_______________<span>September 19—20</span></p>
-			<p>Location____________<span>Berlin</span></p>
-			<p>Venue_______________<span>TBD</span></p>
+			<p>
+				<span use:shuffleLetters={900}>Dates</span>_______________<span use:shuffleLetters
+					>September 19—20</span
+				>
+			</p>
+			<p>
+				<span use:shuffleLetters={900}>Location</span>____________<span use:shuffleLetters
+					>Berlin</span
+				>
+			</p>
+			<p>
+				<span use:shuffleLetters={900}>Venue</span>_______________<span use:shuffleLetters>TBD</span
+				>
+			</p>
 		</div>
 
 		<div class="info tablet">
-			<p>Dates__<span>September 19—20</span></p>
-			<p>City___<span>Berlin</span></p>
-			<p>Venue__<span>TBD</span></p>
+			<p><span use:shuffleLetters>Dates</span>__<span use:shuffleLetters>September 19—20</span></p>
+			<p><span use:shuffleLetters>City</span>___<span use:shuffleLetters>Berlin</span></p>
+			<p><span use:shuffleLetters>Venue</span>__<span use:shuffleLetters>TBD</span></p>
 		</div>
 
 		<div class="footer">
 			<a class="cta-button" href={links.tickets} target="_blank"
-				><span>Buy</span><span>a</span><span>ticket</span><span class="cta-button-price">99€</span
-				></a
+				><span use:shuffleLetters>Buy</span><span use:shuffleLetters>a</span><span
+					use:shuffleLetters>ticket</span
+				><span use:shuffleLetters class="cta-button-price">99€</span></a
 			>
-			<p class="tagline">One conference.<br />All things Git <span class="tagline-carret" /></p>
+			<p class="tagline">
+				<span use:shuffleLetters>One conference.</span><br /><span use:shuffleLetters
+					>All things Git</span
+				> <span class="tagline-carret" />
+			</p>
 		</div>
 
 		<img class="arrows-img" src="images/hero-arrows-tablet.svg" alt="" />
@@ -77,19 +95,8 @@
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 52px;
-		/* opacity: 0;
-		transform: scale(0.9); */
-	}
-
-	.show {
-		/* animation: show-animation 0.5s forwards; */
-	}
-
-	@keyframes show-animation {
-		to {
-			opacity: 1;
-			transform: scale(1);
-		}
+		/* initial animation state */
+		opacity: 0;
 	}
 
 	.frame {
@@ -204,6 +211,15 @@
 		padding: 32px 40px;
 		border-radius: 20px;
 		letter-spacing: -0.06em;
+
+		transition:
+			filter 0.2s,
+			padding 0.2s;
+
+		&:hover {
+			filter: brightness(0.9) contrast(1.1);
+			padding: 32px 50px;
+		}
 	}
 
 	.cta-button-price {

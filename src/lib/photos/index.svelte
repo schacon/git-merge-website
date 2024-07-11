@@ -1,5 +1,9 @@
 <script lang="ts">
+	import { inViewport } from '../../utils/inViewport';
+
+	export let isDocLoaded = false;
 	$: isSectionHovered = false;
+	$: isInViewport = false;
 
 	const handleMouseEnter = () => {
 		isSectionHovered = true;
@@ -11,7 +15,15 @@
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<section class="wrapper" on:mouseenter={handleMouseEnter} on:mouseleave={handleMouseLeave}>
+<section
+	class="wrapper"
+	class:show={isDocLoaded && isInViewport}
+	use:inViewport={() => {
+		isInViewport = true;
+	}}
+	on:mouseenter={handleMouseEnter}
+	on:mouseleave={handleMouseLeave}
+>
 	<img class="floating-image img-1" src="images/photos/img-1.webp" alt="" />
 	<img class="floating-image img-2" src="images/photos/img-2.webp" alt="" />
 	<img
@@ -39,6 +51,8 @@
 		width: 100%;
 		overflow: hidden;
 		margin-bottom: 70px;
+		/* initial */
+		opacity: 0;
 	}
 
 	.floating-image {
@@ -47,8 +61,8 @@
 		border-radius: 30px;
 		filter: brightness(0.4) contrast(0.7);
 		transition:
-			transform 0.2s,
-			filter 0.2s;
+			transform 0.3s,
+			filter 0.3s;
 	}
 
 	.floating-image:hover {
@@ -102,7 +116,7 @@
 	.img-7 {
 		z-index: 1;
 		top: 60%;
-		left: 30%;
+		left: 33%;
 	}
 
 	.back-img {

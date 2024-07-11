@@ -12,12 +12,12 @@
 			isDocLoaded = true;
 		}}
 	/>
-	<Benefits />
-	<DaysSneakpeak />
-	<VideoThumbs />
-	<Photos />
-	<Ticket />
-	<Footer />
+	<Benefits bind:isDocLoaded />
+	<DaysSneakpeak bind:isDocLoaded />
+	<VideoThumbs bind:isDocLoaded />
+	<Photos bind:isDocLoaded />
+	<Ticket bind:isDocLoaded />
+	<Footer bind:isDocLoaded />
 </main>
 
 <style>

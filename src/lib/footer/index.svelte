@@ -1,4 +1,9 @@
 <script lang="ts">
+	import { inViewport } from '../../utils/inViewport';
+
+	export let isDocLoaded = false;
+
+	$: isInViewport = false;
 	$: sponsorEmailCopied = false;
 	$: contributorEmailCopied = false;
 
@@ -25,14 +30,19 @@
 	};
 </script>
 
-<footer class="footer">
+<footer
+	class="footer"
+	class:show={isDocLoaded && isInViewport}
+	use:inViewport={() => {
+		isInViewport = true;
+	}}
+>
 	<div class="sponsors">
 		<div class="sponsors-info">
 			<h3>Sponsors</h3>
 			<p>
-				<button class="copy-button" on:click={copySponsorEmail}>
-					{sponsorEmailCopied ? 'Copied!' : 'Contact us'}
-				</button> if you would like to help sponsor.
+				<a class="email-link" href="mailto:megan@gitbutler.com">Contact us</a> if you would like to help
+				sponsor.
 			</p>
 		</div>
 
@@ -74,10 +84,8 @@
 					/>
 				</svg>
 
-				If you are a Git core contributor and need financial assistance to attend, please
-				<button class="copy-button" on:click={copyContributorEmail}
-					>{contributorEmailCopied ? 'Copied!' : 'contact us'}</button
-				>.
+				If you are a Git core contributor and need financial assistance to attend, contact
+				<a class="email-link" href="mailto:scott@gitbutler.com">scott@gitbutler.com</a>.
 			</p>
 		</div>
 	</div>
@@ -90,6 +98,8 @@
 		gap: 80px;
 		padding-top: 70px;
 		margin-bottom: 70px;
+		/* initial */
+		opacity: 0;
 	}
 
 	.footer:before {
@@ -109,7 +119,7 @@
 		display: none;
 	}
 
-	.copy-button {
+	.email-link {
 		text-decoration: underline;
 		text-decoration-style: dashed;
 		text-underline-offset: 4px;
@@ -197,6 +207,11 @@
 		color: var(--color-white);
 		text-decoration-thickness: 1px;
 		text-underline-offset: 3px;
+		transition: color 0.15s;
+
+		&:hover {
+			color: var(--clr-accent);
+		}
 	}
 
 	.contribution-text {

@@ -1,5 +1,19 @@
-<section class="wrapper">
-	<div class="ticket">
+<script lang="ts">
+	import { links } from '../../content-data';
+	import { inViewport } from '../../utils/inViewport';
+	export let isDocLoaded = false;
+
+	$: isInViewport = false;
+</script>
+
+<section
+	class="wrapper"
+	class:show={isDocLoaded && isInViewport}
+	use:inViewport={() => {
+		isInViewport = true;
+	}}
+>
+	<a class="ticket" href={links.tickets} target="_blank">
 		<div class="ticket-content">
 			<h2 class="title">Buy a ticket</h2>
 
@@ -62,6 +76,7 @@
 			</svg>
 
 			<svg
+				class="ticket-arrow-icon"
 				width="185"
 				height="176"
 				viewBox="0 0 185 176"
@@ -82,7 +97,7 @@
 			playsinline
 			muted
 		/>
-	</div>
+	</a>
 </section>
 
 <style>
@@ -90,6 +105,8 @@
 		display: flex;
 		flex-direction: column;
 		padding-bottom: 70px;
+		/* initial */
+		opacity: 0;
 	}
 
 	.mobile-price {
@@ -103,6 +120,17 @@
 		background-color: #44194e;
 		border-radius: 60px;
 		overflow: hidden;
+		text-decoration: none;
+
+		transition: transform 0.2s;
+
+		&:hover {
+			transform: translateX(10px);
+
+			& .ticket-arrow-icon {
+				transform: translateX(10px);
+			}
+		}
 	}
 
 	.back-video {
@@ -118,7 +146,7 @@
 		object-fit: cover;
 		object-position: center;
 		mix-blend-mode: lighten;
-		filter: blur(15px);
+		filter: blur(35px);
 	}
 
 	.ticket-content {
@@ -180,6 +208,10 @@
 		justify-content: center;
 		/* background-color: rgba(0, 200, 0, 0.5); */
 		padding: 60px;
+	}
+
+	.ticket-arrow-icon {
+		transition: transform 0.2s;
 	}
 
 	.top-notch {
