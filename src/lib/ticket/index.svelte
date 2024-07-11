@@ -123,13 +123,15 @@
 		text-decoration: none;
 
 		transition: transform 0.2s;
+	}
 
-		&:hover {
+	@media (min-width: 641px) {
+		.ticket:hover {
 			transform: translateX(10px);
+		}
 
-			& .ticket-arrow-icon {
-				transform: translateX(10px);
-			}
+		.ticket:hover .ticket-arrow-icon {
+			transform: translateX(10px);
 		}
 	}
 

@@ -165,11 +165,15 @@
 			{data.left.text}
 		</p>
 		<div class="t-r-graphics">
-			<img src="images/days-sneakpeak/day-one-two.svg" alt="" />
+			<img src="images/days-sneakpeak/mobile-day-one.svg" alt="" />
 		</div>
 	</div>
 
 	<div class="b-r">
+		<div class="t-r-graphics">
+			<img src="images/days-sneakpeak/mobile-day-two.svg" alt="" />
+		</div>
+
 		<div class="b-r-text-block">
 			<h3>
 				{data.right[0].title}
@@ -494,6 +498,7 @@
 			flex-direction: column;
 			background-color: #3f69ff;
 			border-radius: var(--radius);
+			overflow: hidden;
 		}
 
 		.w-m .t-r__text {
@@ -505,15 +510,11 @@
 			position: relative;
 			width: 100%;
 			display: flex;
-			height: 170px;
-			padding: 0 20px;
 			/* justify-content: center; */
 		}
 
 		.w-m .t-r-graphics img {
-			position: absolute;
 			width: 100%;
-			max-width: 160px;
 		}
 
 		.w-m .b-r {
@@ -522,7 +523,14 @@
 			gap: 30px;
 			background-color: #21c362;
 			border-radius: var(--radius);
-			padding: 180px 20px 20px;
+			padding-bottom: 20px;
+			overflow: hidden;
+		}
+
+		.w-m .b-r-text-block {
+			display: flex;
+			flex-direction: column;
+			padding: 0 20px;
 		}
 
 		.w-m .b-r-text-block h3 {

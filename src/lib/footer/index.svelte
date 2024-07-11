@@ -96,23 +96,9 @@
 		position: relative;
 		display: flex;
 		gap: 80px;
-		padding-top: 70px;
 		margin-bottom: 70px;
 		/* initial */
 		opacity: 0;
-	}
-
-	.footer:before {
-		position: absolute;
-		top: 0;
-		left: 0;
-		content: '';
-		display: block;
-		width: 100%;
-		height: 2px;
-		margin-bottom: 40px;
-		background-image: linear-gradient(to right, var(--clr-white) 50%, transparent 0);
-		background-size: 10px 2px;
 	}
 
 	.mobile-divider {
