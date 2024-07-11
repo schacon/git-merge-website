@@ -37,12 +37,7 @@
 			<div class="details">
 				<span class="price">99€</span>
 				<div class="details-text">
-					<p>
-						Proceeds donated to the Git project at <a
-							href="https://sfconservancy.org/"
-							target="_blank">Software Freedom Conservancy</a
-						> 🖤
-					</p>
+					<p>Proceeds donated to the Git project at Software Freedom Conservancy 🖤</p>
 					<p>Food, drinks and beer will be included with the ticket for everyone 🍔🍺</p>
 				</div>
 			</div>

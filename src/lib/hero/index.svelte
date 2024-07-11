@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { DotLottieSvelte, type DotLottie } from '@lottiefiles/dotlottie-svelte';
 	import { shuffleLetters } from '../../utils/shuffleLetters';
 	import { inViewport } from '../../utils/inViewport';
 	import { links } from '../../content-data';
@@ -6,6 +7,7 @@
 
 	export let isDocLoaded: boolean;
 	let videoEl: HTMLVideoElement;
+	let dotLottie: DotLottie | null = null;
 	$: isInViewport = false;
 
 	const dispatch = createEventDispatcher<{
@@ -74,7 +76,17 @@
 			</p>
 		</div>
 
-		<img class="arrows-img" src="images/hero-arrows-tablet.svg" alt="" />
+		<div class="arrows-lottie">
+			<DotLottieSvelte
+				src="lottie/hero-lines.lottie"
+				autoResizeCanvas={true}
+				autoplay={true}
+				speed={0.8}
+				dotLottieRefCallback={(ref) => (dotLottie = ref)}
+			/>
+		</div>
+
+		<!-- <img class="arrows-lottie" src="images/hero-arrows-tablet.svg" alt="" /> -->
 
 		<!-- svelte-ignore a11y-media-has-caption -->
 		<video
@@ -125,15 +137,13 @@
 		filter: blur(25px);
 	}
 
-	.arrows-img {
+	.arrows-lottie {
 		position: absolute;
 		z-index: 0;
-		bottom: -80px;
-		left: 70%;
+		bottom: -20px;
+		left: 68%;
 		width: 520px;
-
-		object-fit: cover;
-		object-position: top right;
+		height: 110%;
 	}
 
 	/* TITLE */
@@ -261,7 +271,7 @@
 	/* MEDIA */
 
 	@media (max-width: 1500px) {
-		.arrows-img {
+		.arrows-lottie {
 			left: 70%;
 		}
 
@@ -293,7 +303,7 @@
 			padding: 40px;
 		}
 
-		.arrows-img {
+		.arrows-lottie {
 			width: 420px;
 			bottom: -40px;
 			left: 64%;
@@ -341,9 +351,9 @@
 			margin-left: 6px;
 		}
 
-		.arrows-img {
-			width: 440px;
-			min-width: 400px;
+		.arrows-lottie {
+			width: 400px;
+			min-width: 300px;
 			bottom: -80px;
 			left: auto;
 			right: 0%;
@@ -361,7 +371,7 @@
 			width: calc(100% + 20px);
 		}
 
-		.arrows-img {
+		.arrows-lottie {
 			bottom: -140px;
 		}
 	}
