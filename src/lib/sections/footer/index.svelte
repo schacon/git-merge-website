@@ -68,7 +68,7 @@
 		<div class="other">
 			<img class="git-merge-logo" src="images/git-merge-logo.svg" alt="" />
 			<p class="git-merge-logo-subtitle">
-				Hosted by <a href="https://gitbutler.com/" target="_blank">GitButler</a>
+				Hosted by <a href="https://gitbutler.com/" target="_blank">GitButler</a> and <a href="https://github.com">GitHub</a>
 			</p>
 			<p class="contribution-text">
 				<svg
