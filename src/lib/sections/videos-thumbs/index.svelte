@@ -3,11 +3,12 @@
 	export let isDocLoaded = false;
 
 	$: isInViewport = false;
+	$: isLoaded = isDocLoaded && isInViewport;
 </script>
 
 <section
 	class="wrapper"
-	class:show={isDocLoaded && isInViewport}
+	class:show={isLoaded}
 	use:inViewport={() => {
 		isInViewport = true;
 	}}
@@ -16,23 +17,26 @@
 		<div class="thumb-wrap">
 			<div
 				class="thumb-preview thumb-preview-1"
+				class:show-thumb-1={isLoaded}
 				style:background-image="url('images/video-preview/preview-4.webp')"
 			></div>
 		</div>
 		<div class="thumb-wrap">
 			<div
 				class="thumb-preview thumb-preview-2"
+				class:show-thumb-2={isLoaded}
 				style:background-image="url('images/video-preview/preview-3.webp')"
 			></div>
 		</div>
 		<div class="thumb-wrap">
 			<div
 				class="thumb-preview thumb-preview-3"
+				class:show-thumb-3={isLoaded}
 				style:background-image="url('images/video-preview/preview-2.webp')"
 			></div>
 		</div>
 		<div class="camera-shaped-wrap">
-			<div class="camera-shaped">
+			<div class="camera-shaped" class:show-thumb-4={isLoaded}>
 				<a
 					class="merge-2022-link"
 					href="https://www.youtube.com/watch?v=omGgXdXCt_8&list=PL0lo9MOBetEGEAs1D28ExRQONnX-uZ3Wf&ab_channel=GitHub"
@@ -107,6 +111,9 @@
 		background-size: cover;
 		background-position: center;
 		border-radius: 30px;
+
+		opacity: 0;
+		transform: translateY(20px) translateX(-20px);
 	}
 
 	.thumb-preview-1 {
@@ -132,6 +139,9 @@
 	.camera-shaped {
 		position: relative;
 		display: flex;
+
+		opacity: 0;
+		transform: translateY(20px) translateX(-20px);
 		/* background-color: rgba(200, 0, 0, 0.5); */
 	}
 
@@ -239,6 +249,29 @@
 
 		.disclamer {
 			--font-size: 26px;
+		}
+	}
+
+	.show-thumb-1 {
+		animation: show-thumb-animation 0.5s 0.2s forwards;
+	}
+
+	.show-thumb-2 {
+		animation: show-thumb-animation 0.5s 0.4s forwards;
+	}
+
+	.show-thumb-3 {
+		animation: show-thumb-animation 0.5s 0.6s forwards;
+	}
+
+	.show-thumb-4 {
+		animation: show-thumb-animation 0.5s 0.7s forwards;
+	}
+
+	@keyframes show-thumb-animation {
+		to {
+			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 </style>
