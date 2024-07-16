@@ -5,6 +5,7 @@
 	import VideoThumbs from '$lib/sections/videos-thumbs/index.svelte';
 	import Photos from '$lib/sections/photos/index.svelte';
 	import Ticket from '$lib/sections/ticket/index.svelte';
+	import SponsorsAndCfs from '$lib/sections/sponsorsAndCfs/index.svelte';
 	import Footer from '$lib/sections/footer/index.svelte';
 	$: isDocLoaded = false;
 </script>
@@ -22,7 +23,8 @@
 		<VideoThumbs bind:isDocLoaded />
 		<Photos bind:isDocLoaded />
 		<Ticket bind:isDocLoaded />
-		<Footer bind:isDocLoaded />
+		<SponsorsAndCfs bind:isDocLoaded />
+		<Footer />
 	</main>
 </div>
 

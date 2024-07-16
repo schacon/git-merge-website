@@ -236,11 +236,6 @@
 		transition:
 			filter 0.2s,
 			padding 0.2s;
-
-		&:hover {
-			filter: brightness(0.9) contrast(1.1);
-			padding: 32px 50px;
-		}
 	}
 
 	.cta-button-price {
@@ -280,6 +275,13 @@
 	}
 
 	/* MEDIA */
+
+	@media (min-width: 1040px) {
+		.cta-button:hover {
+			filter: brightness(0.9) contrast(1.1);
+			padding: 32px 50px;
+		}
+	}
 
 	@media (max-width: 1500px) {
 		.arrows-lottie {
