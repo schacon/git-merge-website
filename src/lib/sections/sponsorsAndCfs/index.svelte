@@ -47,6 +47,7 @@
 		href="https://docs.google.com/forms/d/e/1FAIpQLSe5xMs2spBeUSmcqStHFGg9_W8qpJpiAJl8QYtSaSmPYODUmA/viewform"
 		target="_blank"
 		class="banner cfs-wrap"
+		style:background-image="url('images/cfs/megaphone.png')"
 	>
 		<div class="cfs-wrap__about">
 			<h3>Call for speakers</h3>
@@ -137,7 +138,6 @@
 		gap: 20px;
 
 		background-color: #524fee;
-		background-image: url('images/cfs/megaphone.png');
 		background-repeat: no-repeat;
 		background-position: right 20px top 10px;
 		background-size: 360px;
