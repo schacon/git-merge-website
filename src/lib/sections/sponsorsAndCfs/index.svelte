@@ -105,12 +105,10 @@
 		pointer-events: none;
 		position: absolute;
 		z-index: 0;
-		top: 20px;
-		left: 20px;
-		min-width: calc(100% + 40px);
-		height: calc(100% + 40px);
-		margin-left: -20px;
-		margin-top: -20px;
+		top: 0;
+		left: 0;
+		min-width: 100%;
+		height: 100%;
 		object-fit: cover;
 		object-position: center;
 		mix-blend-mode: lighten;
