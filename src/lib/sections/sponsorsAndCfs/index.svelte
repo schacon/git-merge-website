@@ -105,8 +105,8 @@
 		pointer-events: none;
 		position: absolute;
 		z-index: 0;
-		top: 0;
-		left: 0;
+		top: 20px;
+		left: 20px;
 		min-width: calc(100% + 40px);
 		height: calc(100% + 40px);
 		margin-left: -20px;
