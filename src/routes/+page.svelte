@@ -30,6 +30,7 @@
 
 <style>
 	.container {
+		max-width: none;
 		background-image: radial-gradient(
 			color-mix(in srgb, var(--clr-background) 90%, var(--clr-white)) 2px,
 			var(--clr-background) 0
