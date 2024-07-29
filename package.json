@@ -24,6 +24,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@lottiefiles/dotlottie-svelte": "^0.3.7"
+		"@lottiefiles/dotlottie-svelte": "^0.3.7",
+		"@vercel/analytics": "^1.3.1"
 	}
 }
