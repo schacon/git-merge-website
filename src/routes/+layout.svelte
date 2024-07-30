@@ -2,7 +2,9 @@
 	import '../styles/main.css';
 </script>
 
-<script async src="https://u.gitbutler.com/script.js" data-website-id="63698491-2913-475d-b965-c7bc9f6aab9e"></script>
+<svelte:head>
+	<script async defer data-website-id="577a585a-835c-4e1d-9c9d-5c018c851737" src="u.js"></script>
+</svelte:head>
 
 <div>
 	<slot></slot>
