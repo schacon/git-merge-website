@@ -12,6 +12,9 @@ npm create svelte@latest
 
 # create a new project in my-app
 npm create svelte@latest my-app
+
+one new amazing thing
+after anohter
 ```
 
 ## Developing
