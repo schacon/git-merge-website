@@ -7,6 +7,14 @@
 	import Ticket from '$lib/sections/ticket/index.svelte';
 	import SponsorsAndCfs from '$lib/sections/sponsorsAndCfs/index.svelte';
 	import Footer from '$lib/sections/footer/index.svelte';
+	import Hero from '$lib/sections/hero/index.svelte';
+	import Benefits from '$lib/sections/benefits/index.svelte';
+	import DaysSneakpeak from '$lib/sections/days-sneakpeak/index.svelte';
+	import VideoThumbs from '$lib/sections/videos-thumbs/index.svelte';
+	import Photos from '$lib/sections/photos/index.svelte';
+	import Ticket from '$lib/sections/ticket/index.svelte';
+	import SponsorsAndCfs from '$lib/sections/sponsorsAndCfs/index.svelte';
+	import Footer from '$lib/sections/footer/index.svelte';
 	$: isDocLoaded = false;
 </script>
 
@@ -18,6 +26,12 @@
 				isDocLoaded = true;
 			}}
 		/>
+		<Benefits bind:isDocLoaded />
+		<DaysSneakpeak bind:isDocLoaded />
+		<VideoThumbs bind:isDocLoaded />
+		<Photos bind:isDocLoaded />
+		<Ticket bind:isDocLoaded />
+		<SponsorsAndCfs bind:isDocLoaded />
 		<Benefits bind:isDocLoaded />
 		<DaysSneakpeak bind:isDocLoaded />
 		<VideoThumbs bind:isDocLoaded />
