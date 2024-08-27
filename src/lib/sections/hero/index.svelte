@@ -44,7 +44,7 @@
 		<div class="info desktop">
 			<p>
 				<span use:shuffleByChar={900}>Dates</span>_______________<span use:shuffleByChar
-					>September 19—20</span
+					>September 20-21</span
 				>
 			</p>
 			<p>
